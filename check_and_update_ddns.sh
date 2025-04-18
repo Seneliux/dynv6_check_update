@@ -5,7 +5,7 @@ LOG_FILE="/tmp/last_dns_update.log"
 
 # Get IPv4 and IPv6 addresses
 ipv4_addr=$(ip -4 addr show ppp0 | grep 'inet' | awk '{print $2}' | head -n 1 | cut -d'/' -f1)
-ipv6_addr=$(ip -6 addr show ppp0 | grep 'inet6' | grep 'global' | awk '{print $2}' | head -n 1 | cut -d'/' -f1)
+ipv6_addr=$(curl -sS -f https://api64.ipify.org)
 
 # Function to update DNS records
 update_dns() {
